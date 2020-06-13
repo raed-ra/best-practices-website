@@ -1,0 +1,19 @@
+{
+  "name": "rrportfolios",
+  "version": "1.0.0",
+  "description": "RR portfolios",
+  "main": "server.js ",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raed-ra/h15Portfolios.git"
+  },
+  "author": "Raed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raed-ra/h15Portfolios/issues"
+  },
+  "homepage": "https://github.com/raed-ra/h15Portfolios#readme"
+}
