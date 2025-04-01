@@ -1,0 +1,87 @@
+/* --- Brand Color Background --- */
+.bg-RP {
+    background-color: #007cae !important;
+    /*color: white;*/
+  }
+  
+  /* --- Consistent Typography & Spacing --- */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding-bottom: 60px;
+    background-color: #f8f9fa;
+  }
+  
+  /* --- Checkbox Section Styling --- */
+  .practice {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* --- Reward Image Styling --- */
+  .reward-img {
+    max-width: 100%;
+    width: 300px;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  /* --- Footer Tweak --- */
+  footer {
+    color: white;
+    padding: 2rem 0;
+  }
+  
+  footer h4,
+  footer h3,
+  footer a {
+    color: white !important;
+  }
+  
+  footer a.navbar-brand:hover {
+    text-decoration: underline;
+  }
+  
+  /* --- Section Headings --- */
+  .section-title {
+    border-bottom: 2px solid #007cae;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* --- CV Image Styling --- */
+  main img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  /* --- Buttons Consistency --- */
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+  }
+  
+  .cv-photo {
+    max-width: 100%;
+    width: 12rem;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* --- Responsive Adjustments --- */
+  @media (max-width: 768px) {
+    .cv-photo {
+      width: 100%;
+    }
+  
+    .practice {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
