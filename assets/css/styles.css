@@ -8,8 +8,9 @@
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    padding-bottom: 60px;
+    padding-bottom: 3.75rem; /* 60px / 16px = 3.75rem */
     background-color: #f8f9fa;
+    font-size: 16px; /* Explicit base font size */
   }
   
   
@@ -116,10 +117,10 @@
   
 /* Progress bar with white frame */
   .progress {
-    height: 20px;
-    background-color: transparent; /* or a subtle background if you want */
-    border: 2px solid white; /* the white frame */
-    border-radius: 5px;
+    height: 1.25rem; /* 20px / 16px = 1.25rem */
+    background-color: transparent;
+    border: 0.125rem solid white; /* 2px / 16px = 0.125rem */
+    border-radius: 0.3125rem; /* 5px / 16px = 0.3125rem */
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -195,4 +196,15 @@
     top: 60px; /* adjust based on your header height */
     z-index: 999;
     padding: 0.5rem;
+  }
+
+  .low-count {
+    color: red;
+  }
+  .high-count {
+    color: green;
+  }
+
+  .progress-bar {
+    width: var(--progress-width, 0%);
   }

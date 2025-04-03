@@ -34,10 +34,11 @@ $(document).ready(function () {
     $summary.html(`You have fulfilled <span id="checkedCount">${checked}</span> out of ${total} best practices.`);
 
     const $checkedCount = $('#checkedCount');
-    $checkedCount.css('color', checked < 12 ? 'red' : 'green');
+    $checkedCount.removeClass('low-count high-count');
+    $checkedCount.addClass(checked < 12 ? 'low-count' : 'high-count');
 
     const percentage = (checked / total) * 100;
-    $progressBar.css('width', `${percentage}%`).attr('aria-valuenow', checked);
+    $progressBar.css('--progress-width', `${percentage}%`).attr('aria-valuenow', checked);
 
     if (checked >= 12) {
       $loader.removeClass('hidden');
