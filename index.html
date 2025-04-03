@@ -1,389 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    
-    <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R-Portfolio</title>
-
-    <link rel="stylesheet" href="../best-practice-website/assets/css/styles.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Best Practices Checklist</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
-<body>  
-   <header class="container-fluid bg-RP">
+<body>
+
+  <!-- Load Header -->
+  <header class="container-fluid bg-RP sticky-header text-white">
     <nav class="navbar container mb-3 navbar-expand-lg navbar-dark bg-RP">
-        <a class="navbar-brand" href="index.html">RIPortfolios</a>     
-        <button 
-            class="navbar-toggler" 
-            type="button" 
-            data-toggle="collapse" 
-            data-target="#navbarSupportedContent" 
-            aria-controls="navbarSupportedContent" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">     
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>     
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#front-end">FrontEnd Projects <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#back-end">BackEnd Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Login.html">Login</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" 
-                        href="#" 
-                        id="navbarDropdown" 
-                        role="button" 
-                        data-toggle="dropdown" 
-                        aria-haspopup="true" 
-                        aria-expanded="false">
-                        Lets Connect
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="ContactUs.html">Contact us</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="cv.html">About</a>
-                    </div>
-                </li>
-            </ul>
+      <a class="navbar-brand" href="RIportfolio.html">RIPortfolios</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+          <label for="searchInput" class="sr-only">Search</label>
+          <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="RIportfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="AboutMe.html">About Me (CV)</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Checklist</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- Progress bar -->
+  <div class="sticky-progress-wrapper">
+  <div class="progress">
+    <div 
+      id="practiceProgressBar" 
+      class="progress-bar bg-danger" 
+      role="progressbar" 
+      style="width: 0%" 
+      aria-valuenow="0" 
+      aria-valuemin="0" 
+      aria-valuemax="18">
+    </div>
+  </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container mt-4">
+    <h1>Web Development Best Practices</h1>
+    <p id="instruction" class="mt-3 font-weight-bold">Select the best practices your site meets:</p>
+
+    <div class="practice-wrapper">
+      <!-- Column 1: Checklist -->
+      <div id="practices" class="practice-column"></div>
+
+      <!-- Column 2: Summary + Animal Reward -->
+      <div class="reward-column">
+        <p id="summary" class="mt-3 font-weight-bold"></p>
+        <div id="animalContainer" class="cute-animal"></div>
+        <div id="loader" class="reward-img hidden"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Load Footer -->
+  <footer class="container-fluid mt-5 bg-RP">
+    <div class="container navbar-dark bg-RP">
+      <div class="row mb-xs-40 mb-sm-60">
+        <div class="col-xs-12 col-md-5">
+          <h3>Raed Rahmanseresht</h3>
+          <p><a class='email navbar-brand' href='mailto:Raed_ra@yahoo.com'>Raed_ra@yahoo.com</a></p>
+          <p>I’m a software developer. I can help you solve a problem, build a product or grow existing project.</p>
         </div>
-      </nav>
-   </header> 
-<!--Navbar end-->
-
-    <main class='container'> <!--container start-->
-        <article class="row">
-            <div class="col px-0">
-                <div class="jumbotron bg-light"> <!--Portfolio Header start-->
-                    <div class="row">    <!--Portfolio Header row start-->
-                        <div class="col-12 order-2 order-lg-1 col-lg-6">
-                            <h1 class="display-4">Hello,</h1> 
-                            <h2 class="display-6">My name is Raed.</h2>
-                            <p class="lead">I'd like to be the one to make your ideas and imagination visual.</p>
-                            <hr class="my-4">
-                            <p>Thanks for sharing your imagination. This is more than a job for me. I enjoy seeing your happy face when you see your site!</p>
-                            <p class="lead">
-                            <a class="btn btn-primary btn-lg" href="./Login.html" role="button">Register name & your idea!</a>
-                            </p>
-                        </div>  
-                        <div class="col-12 order-1 order-lg-2 col-lg-6">
-                            <div class="embed-responsive embed-responsive-16by9 mb-3">
-                                <iframe 
-                                    class="embed-responsive-item"
-                                    width="560" 
-                                    height="315" 
-                                    src="./assets/images/promo.mp4" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picutre-in-picture" 
-                                    allowfullscreen> 
-                                </iframe>
-                            </div>
-                        </div>
-                    </div>  <!--Portfolio Header row end-->
-                </div> <!--Portfolio Header end-->
-                <div class="card mb-4">  
-                    <div class="card-body">
-                      <a id="front-end">
-                        <h5 class="card-title">Full-Stack projects</h5>
-                      </a>
-                      <p class="card-text">Some quick examples of my websites!</p>
-                      <!-- <a href="./Project1.html" class="btn btn-primary">Frond-end projects</a> -->
-                    </div>  
-                </div>
-            </div>
-        </article>
-
-        <article class="row">
-            <div class="col px-0 mb-3">
-                <div class="card-deck">
-                    <div class="card">
-                    <!-- <img class="card-img-top" src="./assets/images/aerial-shot-of-an-island-3393444.jpg" alt="photo project 1"> -->
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="./assets/images/quiz-challenge.jpg" alt="photo 1 quiz-Challenge-p1">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="./assets/images/quiz-challenge-p2.jpg" alt="photo 2 quiz-Challenge-p2">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="./assets/images/quiz-challenge-p3.jpg" alt="photo 3 quiz-Challenge-p3">
-                                </div>
-                                </div>
-                                <a class="carousel-control-next" href="https://raed-ra.github.io/Homework-4/index.html" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                      <div class="card-body">
-                          <h5 class="card-title">Quiz website</h5>
-                          <p class="card-text">You can choose questions from different categories. 
-                            Some categories download questions from another website.
-                            One category has the questions stored in a JSON file locally to the index.html file.
-                            Lot more question category/topic can be added using the API. 
-                            When an answer is chosen all the other answers will become locked and user can't change answer.
-                            User score will be registered in scoreboard if "saved".
-                            The scoreboardis sorted and gets recorded in the local storage. 
-                            The questions with right and wrong answer will initiat a sound. However user can mute the game on the first page.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 2 days ago</small></p>
-                          <a href="https://raed-ra.github.io/H4-Quizapp/" class="btn btn-primary">Quiz Challenge</a>
-                      </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item font-weight-bold">JQuery</li>
-                          <li class="list-group-item">Local Storage</li>
-                          <li class="list-group-item">CSS loader</li>
-                          <li class="list-group-item">Using API to load data</li>
-                        </ul>
-                      <div class="card-body">
-                          <a href="https://github.com/raed-ra/H4-Quizapp" class="card-link">github Repo</a>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <img class="card-img-top" src="./assets/images/passwordg.jpg" alt="passwordg">
-                      <div class="card-body">
-                          <h5 class="card-title">Password Generator</h5>
-                          <p class="card-text">Password generator - up to 16 charectors.
-                              Will warn if less than 4 charecters are selected.
-                              Warns if no charectors selected Warns if length of password selected is outside 8 - 64 length. 
-                              The min-max can easily change to any number i.e. 12 to 64).
-                              It allows copying password on clip board It has a read only text area to deliver password.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 2 days ago</small></p>
-                          <a href="https://raed-ra.github.io/H3-PassGenerator/" class="btn btn-primary">Password Generator</a>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item font-weight-bold">JQuery</li>
-                          <li class="list-group-item">Local Storage</li>
-                          <li class="list-group-item">Bootstrap!</li>
-                        </ul>
-                      <div class="card-body">
-                          <a href="https://github.com/raed-ra/H3-PassGenerator" class="card-link">github Repo</a>
-                      </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/Daily-acitivity-planner.jpg" alt="Daily acitivity planner">
-                        <div class="card-body">
-                            <h5 class="card-title">Daily Calender</h5>
-                            <p class="card-text">Daily activity planner that saves up to 8 task for the working hours during the day!
-                              Helpful for quick standup meeting at start of the daty to capture your daily tasks.
-                              Interactive calender that allows you to see historic tasks as well as tasks for the rest of the month.
-                            </p>
-                            <p class="card-text"><small class="text-muted">Last updated 2 days ago</small></p>
-                            <a href="https://raed-ra.github.io/H5-DailyActivityPlanner/" class="btn btn-primary">Activity Planner</a>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item font-weight-bold">JQuery</li>
-                          <li class="list-group-item">Local Storage</li>
-                          <li class="list-group-item">Moment.Js Libary</li>
-                      </ul>
-                      <div class="card-body">
-                          <a href="https://github.com/raed-ra/H5-DailyActivityPlanner" class="card-link">github Repo</a>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-<!--Horizental card start-->
-        <!-- <div class="row">
-            <div class="col px-0">
-                <div class="card mb-4">  
-                    <div class="card-body">
-                      <a id="back-end">
-                        <h5 class="card-title">Back-End</h5>
-                      </a>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary disabled">Disabled</a>
-                    </div>  
-                </div>
-            </div>
-        </div> -->
-<!--Horizental card end-->
-        <article class="row">
-            <div class="col px-0 mb-3">
-                <div class="card-deck">
-                    <div class="card">
-                    <img class="card-img-top" src="./assets/images/Weatherforecast.jpg" alt="Weatherforecast">
-                        <div class="card-body">
-                            <h5 class="card-title">Weather forecaset</h5>
-                            <p class="card-text">Provides weatherforecast for the next 5 days - Any location on our planet!
-                              Returns an error if wrong city name entered. History list on side navbar saves correct city name with upper case letter.
-                            </p>
-                            <p class="card-text"><small class="text-muted">Last updated 2 dayss ago</small></p>
-                            <a href="https://raed-ra.github.io/H6-WeatherForecast/" class="btn btn-primary">Weather forecaset</a>                
-                        </div>          
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item font-weight-bold">JQuery</li>
-                            <li class="list-group-item">Local storage</li>
-                            <li class="list-group-item">Moment.js libaray used</li>
-                            <li class="list-group-item">Pulls data from API</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="https://github.com/raed-ra/H6-WeatherForecast" class="card-link">github Repo</a>
-                        </div>
-                    </div>      
-
-                    <div class="card">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="./assets/images/Crypto-Portfolio-Tracker1.jpg" alt="photo 1 quiz-Challenge-p1">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="./assets/images/Crypto-Portfolio-Tracker2.jpg" alt="photo 2 quiz-Challenge-p2">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">The cryptocurrency trading simulator</h5>
-                            <p class="card-text">Crypto Kings is an online crypto currency trading simulator that doesn’t require your own money to begin trading. 
-                              You’re given USD$100,000 (virtual/fake money) to begin buying and selling from a selection of ten of the most popular cryptocurrencies 
-                              whose values are updated regularly via data feeds from real-world cryptocurrency exchanges.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 2 days ago</small></p>
-                            <a href="https://raed-ra.github.io/Proj1-cryptoKing/" class="btn btn-primary">Crypto portoflios</a>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item font-weight-bold">Foundation - CSS Framework</li>
-                            <li class="list-group-item">HTML, CSS, JavaScript, Jquery, AJAX</li>
-                            <li class="list-group-item">"Coinmarketcap API"  "Cryptocompare API"  "ApexChart js library"
-                            </li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="https://raed-ra.github.io/Proj1-cryptoKing" class="card-link">Crypto portoflios</a>
-                        </div>
-                    
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <div class="container mt-5">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Explore Best Practices</h5>
-              <p class="card-text">
-                Review and select coding best practices in HTML, CSS, and JavaScript. Earn a surprise reward when your site meets the bar!
-              </p>
-              <a href="best-practices.html" class="btn btn-primary">Go to Best Practices</a>
-            </div>
-          </div>
+      </div>
+      <div class="row mb-xs-40 mb-ms-80">
+        <div class="col-xs-12 col-sm-6 col-md-4 mb-xs-40">
+          <h4>Menu</h4>
+          <ul class='list--reset'>
+            <li><a class="navbar-brand" href="AboutMe.html">About Me (CV)</a></li>
+            <li><a class="navbar-brand " href="index.html">Checklist</a></li>
+            <li><a class="navbar-brand " href="RIportfolio.html">My Portfolio</a></li>
+          </ul>
         </div>
-        
-    </main> <!--Container end-->
- 
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <h4>Contact</h4>
+          <a class="navbar-brand" href="mailto:Raed_ra@yahoo.com">Raed_ra@yahoo.com</a><br>
+          <a class="navbar-brand" href="skype:live:raed.rahmanseresht">Skype</a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h4>Online</h4>
+          <a class="navbar-brand" href="https://github.com/raed-ra/">Github</a><br>
+          <a class="navbar-brand" href="https://twitter.com/Raed_ra/">Twitter</a><br>
+          <a class="navbar-brand" href="https://www.linkedin.com/in/raed-rh/">LinkedIn</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="copyright">Copyright Raed Rahmanseresht 2025 &copy;</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    <footer class="container-fluid mt-5 bg-RP">
-        <div class='container navbar-dark bg-RP'>
-            <div class='row mb-xs-40 mb-sm-60'>
-              <div class='col-xs-12 col-md-5'>
-                <h3>Raed Rahmanseresht</h3>
-                <p><a class='email navbar-brand' href='mailto:Raed_ra@yahoo.com'>Raed_ra@yahoo.com</a></p>
-                <p>I’m a software developer. I can help you solve 
-                a problem, build a product or grow existing project.</p>
-              </div>
-            </div>
-        
-            <div class='row mb-xs-40 mb-ms-80'>   
-              <div class='col-xs-12 col-sm-6 col-md-4 mb-xs-40'>
-                <h4 class='mb-xs-20 mb-sm-40'>Menu</h4>
-                <div class="row">
-                  <div class="col-xs-6">
-                    <ul class='list--reset'>
-                      <li>
-                        <a  class="navbar-brand" href='./cv.html'>About</a>
-                      </li>
-                      <li>
-                        <a  class="navbar-brand disabled" href='./assets/Completions and WellTestEngineer Jan 2019- Raed - CV.pdf'>My Resume</a>
-                      </li>
-                      <li>
-                        <a  class="navbar-brand disabled" href='/blog/'>Blog (disabled)</a>
-                      </li>
-                      <li>
-                        <a class="navbar-brand disabled" href='/Project1.html'>Projects (disabled)</a>
-                      </li>
-                      <li>
-                        <a class="navbar-brand disabled" href='/privacy/'>Privacy (disabled)</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              
-              <div class='col-xs-12 col-sm-6 col-md-4 col-md-offset-1 mb-xs-40'>
-                <h4 class='mb-xs-20 mb-sm-40'>Contact</h4>
-                <ul class='list--reset'>
-                  <li>
-                    <a class="navbar-brand" href='mailto:Raed_ra@yahoo.com'>
-                      Raed_ra@yahoo.com
-                    </a>
-                    <!-- <a class="link--dark navbar-brand" href='/pgp-key/'>
-                      (pgp)
-                    </a> -->
-                  </li>
-                  <li>
-                    <a class="navbar-brand" href='skype:live:raed.rahmanseresht' target='_blank' title='Skype me'>
-                      Skype
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              
-              <div class='col-xs-12 col-sm-6 col-md-3 mb-xs-40'>
-                <h4 class='mb-xs-20 mb-sm-40'>Online</h4>
-                <ul class='list--reset'>
-                  <li>
-                    <a class="navbar-brand" href='https://github.com/raed-ra/' target='_blank' title='Look through my Github profile'>
-                      Github
-                    </a>
-                  </li>
-                  <li>
-                    <a class="navbar-brand" href='https://twitter.com/Raed_ra/' target='_blank' title='Look through my Twitter profile'>
-                      Twitter
-                    </a>
-                  </li>
-                  <li>
-                    <a class="navbar-brand" href='http://stackoverflow.com/users/12832882/raed' target='_blank' title='See my Stack Overflow profile'>
-                      Stack Overflow
-                    </a>
-                  </li>
-                  <li>
-                    <a class="navbar-brand" href='https://www.linkedin.com/in/raed-rh/' target='_blank' title='Look through my linkedIn profile'>
-                      LinkedIn
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class='row'>
-              <div class='col-xs-12'>
-                <p class='copyright'>Copyright Raed Rahmanseresht 2020 &copy;</p>
-              </div>
-            </div>
-          </div>
-    </footer>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+<!-- jQuery FIRST — and NO defer -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+
+<!-- Your custom scripts (OK to defer) -->
+<script src="assets/js/best-practices.js" defer></script>
+<script src="assets/js/search-handler.js" defer></script>
+
+<!--  Bootstrap & Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous" defer></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous" defer></script>
+
+
 </body>
 </html>
+
+
+

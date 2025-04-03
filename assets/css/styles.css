@@ -12,20 +12,13 @@
     background-color: #f8f9fa;
   }
   
-  /* --- Checkbox Section Styling --- */
-  .practice {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
   
   /* --- Reward Image Styling --- */
   .reward-img {
-    max-width: 100%;
-    width: 300px;
-    border-radius: 0.5rem;
-    margin-top: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
   }
   
   /* --- Footer Tweak --- */
@@ -43,6 +36,12 @@
   footer a.navbar-brand:hover {
     text-decoration: underline;
   }
+
+  /* Make header nav links white */
+    header .nav-link,
+    header .navbar-brand {
+  color: white !important;
+}
   
   /* --- Section Headings --- */
   .section-title {
@@ -73,6 +72,26 @@
     margin-bottom: 1rem;
   }
   
+/* --- Practice Checklist Styling --- */
+  .practice {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .practice input[type="checkbox"] {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: 0.6rem; /* space between checkbox and label */
+  }
+
+  .practice label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+  }
+  
   /* --- Responsive Adjustments --- */
   @media (max-width: 768px) {
     .cv-photo {
@@ -80,8 +99,100 @@
     }
   
     .practice {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 0.1rem;
+        gap: 0.1rem;
+      }
+  }
+
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* this ensures the header stays on top of other elements by setting a high z-index which is for layering */
+    background-color: #007cae;
+    padding-bottom: 0.5rem; /* this adds some space below the header */
+  }
+  
+/* Progress bar with white frame */
+  .progress {
+    height: 20px;
+    background-color: transparent; /* or a subtle background if you want */
+    border: 2px solid white; /* the white frame */
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .practice-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+  
+  /* Each column */
+  .practice-column {
+    flex: 1;
+  }
+  
+  .reward-column {
+    flex: 1;
+  }
+  
+  /* Responsive: stack vertically on small screens */
+  @media (max-width: 768px) {
+    .practice-wrapper {
       flex-direction: column;
-      align-items: flex-start;
+    }
+  
+    .reward-column {
+      margin-top: 1rem;
+    }
+  }
+
+  #summary, #instruction {
+    margin-top: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  
+/* --- Loader Spinner --- */
+#loader {
+    border: 1.2rem solid white;
+    border-radius: 50%;
+    border-top: 1.2rem solid #56a5eb;
+    width: 12rem;
+    height: 12rem;
+    animation: spin 2s linear infinite;
+  
+    /* Center inside its container */
+    margin: 2rem auto; /* add spacing and horizontal centering */
+    display: block;
+
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
   
+  .hidden {
+    display: none !important;
+  }
+  
+/* Sticky Progress Bar Wrapper */
+.sticky-progress-wrapper {
+    position: sticky;
+    top: 60px; /* adjust based on your header height */
+    z-index: 999;
+    padding: 0.5rem;
+  }

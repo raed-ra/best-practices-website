@@ -1,85 +1,107 @@
-document.addEventListener("DOMContentLoaded", function () {
+$(document).ready(function () {
   "use strict";
-  // Best practices for HTML, CSS, and JavaScript  
-  
+
   const practices = [
-      { id: 'semantic', text: 'Use semantic HTML elements (e.g., <header>, <main>, <footer>)' }, // for SEO, accessibility, maintainability, better structure
-      { id: 'alt-text', text: 'Add alt text to all images' },  // for accessibility, SEO fallback
-      { id: 'indented', text: 'Keep HTML well-indented and readable' }, // for maintainability, readability and collaboration 
-      { id: 'labels', text: 'Use <label> elements with inputs for accessibility' }, // for accessibility, better UX and usability
-      { id: 'validation', text: 'Validate HTML with W3C validator' }, // for standards compliance, better performance and SEO
-      { id: 'no-inline-css', text: 'Avoid inline CSS' }, // for separation of concerns, maintainability and performance
-      { id: 'responsive-units', text: 'Use %/rem/em for font-size and spacing' }, //for responsive design, better accessibility and maintainability
-      { id: 'media-queries', text: 'Use media queries for responsiveness' }, //for responsive design, better UX and usability
-      { id: 'css-modular', text: 'Organize CSS into clear sections or modules' }, // for maintainability, readability and collaboration
-      { id: 'bootstrap', text: 'Use Bootstrap grid effectively' }, // for responsive design, better UX and usability
-      { id: 'no-inline-js', text: 'Avoid inline JavaScript' }, // for separation of concerns, maintainability and performance
-      { id: 'defer-async', text: 'Use defer or async for script loading' }, // for performance, better UX and usability
-      { id: 'strict-mode', text: 'Use strict mode in JavaScript' }, // for better error handling, performance and security
-      { id: 'let-const', text: 'Use let/const instead of var' }, // for block scoping, better readability and maintainability
-      { id: 'event-listeners', text: 'Use addEventListener instead of inline handlers' }, // for separation of concerns, maintainability and performance
-      { id: 'no-globals', text: 'Avoid global JS variables' }, // for better performance, security and maintainability
-      { id: 'localstorage', text: 'Use localStorage for saving preferences' },
-      { id: 'ajax', text: 'Use AJAX to fetch external data' }
-    ];
-  
-  const container = document.getElementById('practices');
-  const summary = document.getElementById('summary');
-  const animalContainer = document.getElementById('animalContainer');
+    { id: 'semantic', text: 'Use semantic HTML elements (e.g., <header>, <main>, <footer>)' },
+    { id: 'alt-text', text: 'Add alt text to all images' },
+    { id: 'indented', text: 'Keep HTML well-indented and readable' },
+    { id: 'labels', text: 'Use <label> elements with inputs for accessibility' },
+    { id: 'validation', text: 'Validate HTML with W3C validator' },
+    { id: 'no-inline-css', text: 'Avoid inline CSS' },
+    { id: 'responsive-units', text: 'Use %/rem/em for font-size and spacing' },
+    { id: 'media-queries', text: 'Use media queries for responsiveness' },
+    { id: 'css-modular', text: 'Organize CSS into clear sections or modules' },
+    { id: 'bootstrap', text: 'Use Bootstrap grid effectively' },
+    { id: 'no-inline-js', text: 'Avoid inline JavaScript' },
+    { id: 'defer-async', text: 'Use defer or async for script loading' },
+    { id: 'strict-mode', text: 'Use strict mode in JavaScript' },
+    { id: 'let-const', text: 'Use let/const instead of var' },
+    { id: 'event-listeners', text: 'Use addEventListener instead of inline handlers' },
+    { id: 'no-globals', text: 'Avoid global JS variables' },
+    { id: 'localstorage', text: 'Use localStorage for saving preferences' },
+    { id: 'ajax', text: 'Use AJAX to fetch external data' }
+  ];
+
+  const $checklistContainer = $('#practices');
+  const $summary = $('#summary');
+  const $loader = $('#loader');
+  const $animalContainer = $('#animalContainer');
+  const $progressBar = $('#practiceProgressBar');
 
   function updateSummary() {
     const total = practices.length;
-    const checked = practices.filter(p => localStorage.getItem(p.id) === 'true').length; //this line counts the number of checked items by filtering the practices array and checking if the localStorage item is true
-    summary.textContent = `You have fulfilled ${checked} out of ${total} best practices.`;
+    const checked = practices.filter(p => localStorage.getItem(p.id) === 'true').length;
+    $summary.html(`You have fulfilled <span id="checkedCount">${checked}</span> out of ${total} best practices.`);
+
+    const $checkedCount = $('#checkedCount');
+    $checkedCount.css('color', checked < 12 ? 'red' : 'green');
+
+    const percentage = (checked / total) * 100;
+    $progressBar.css('width', `${percentage}%`).attr('aria-valuenow', checked);
 
     if (checked >= 12) {
+      $loader.removeClass('hidden');
+      $progressBar.removeClass('bg-danger').addClass('bg-success');
       if (localStorage.getItem('animalShown')) {
         showAnimal(localStorage.getItem('animalUrl'));
       } else {
-        fetch('https://random.dog/woof.json')
-          .then(response => response.json())
-          .then(data => {
-            showAnimal(data.url);
-            localStorage.setItem('animalShown', 'true');
-            localStorage.setItem('animalUrl', data.url);
-          });
+        fetchAnimalImage();
       }
     } else {
       localStorage.removeItem('animalShown');
       localStorage.removeItem('animalUrl');
-      animalContainer.innerHTML = '';
+      $progressBar.removeClass('bg-success').addClass('bg-danger');
+      $animalContainer.empty();
+      $loader.addClass('hidden');
+    }
+  }
+
+  async function fetchAnimalImage() {
+    try {
+      const response = await fetch('https://random.dog/woof.json');
+      const data = await response.json();
+      showAnimal(data.url);
+      localStorage.setItem('animalShown', 'true');
+      localStorage.setItem('animalUrl', data.url);
+    } catch (error) {
+      $animalContainer.html("<p>🐶 Failed to load image. Try again!</p>");
     }
   }
 
   function showAnimal(url) {
-    const img = document.createElement('img');
-    img.src = url || ''; //  fallback here
-    img.alt = 'A cute animal';
-    img.className = 'reward-img';
-    animalContainer.innerHTML = "<h3>Congrats! 🎉 Look! Someone is happy for you!:</h3>";
-    animalContainer.appendChild(img);
+    $animalContainer.empty();
+    const img = $('<img>', {
+      src: url || '',
+      alt: 'A cute animal',
+      class: 'reward-img'
+    });
+    $animalContainer.append("<h3>Congrats! 🎉 You've made this guy happy!</h3>");
+    $animalContainer.append(img);
+    $loader.addClass('hidden');
   }
 
   practices.forEach(p => {
-    const div = document.createElement('div');
-    div.className = 'practice';
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = p.id;
-    checkbox.checked = localStorage.getItem(p.id) === 'true';
-    checkbox.addEventListener('change', () => {
-      localStorage.setItem(p.id, checkbox.checked); //this line
+    const $div = $('<div>', { class: 'practice' });
+    const $checkbox = $('<input>', {
+      type: 'checkbox',
+      id: p.id,
+      checked: localStorage.getItem(p.id) === 'true'
+    });
+
+    $checkbox.on('change', function () {
+      localStorage.setItem(p.id, this.checked);
       updateSummary();
     });
 
-    const label = document.createElement('label');
-    label.htmlFor = p.id;
-    label.textContent = ' ' + p.text;
+    const $label = $('<label>', {
+      for: p.id,
+      text: ' ' + p.text
+    });
 
-    div.appendChild(checkbox);
-    div.appendChild(label);
-    container.appendChild(div);
+    $div.append($checkbox, $label);
+    $checklistContainer.append($div);
   });
 
   updateSummary();
 });
+
