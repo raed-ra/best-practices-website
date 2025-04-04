@@ -1,0 +1,111 @@
+[
+    {
+      "id": "semantic",
+      "text": "Use semantic HTML elements (e.g., <header>, <main>, <footer>)",
+      "info": "Helps screen readers and search engines understand your content structure.",
+      "example": "<main>\n  <section>\n    <h1>About Us</h1>\n  </section>\n</main>"
+    },
+    {
+      "id": "alt-text",
+      "text": "Add alt text to all images",
+      "info": "Improves accessibility and SEO by describing images for screen readers.",
+      "example": "<img src='cat.jpg' alt='A cute cat sleeping on the sofa' />"
+    },
+    {
+      "id": "indented",
+      "text": "Keep HTML well-indented and readable",
+      "info": "Makes code easier to read and collaborate on.",
+      "example": "<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n</ul>"
+    },
+    {
+      "id": "labels",
+      "text": "Use <label> elements with inputs for accessibility",
+      "info": "Labels help screen readers associate inputs with text.",
+      "example": "<label for='email'>Email:</label>\n<input type='email' id='email' />"
+    },
+    {
+      "id": "validation",
+      "text": "Validate HTML with W3C validator",
+      "info": "Helps you catch errors that may cause rendering or accessibility issues.",
+      "example": "Use https://validator.w3.org to check your HTML."
+    },
+    {
+      "id": "no-inline-css",
+      "text": "Avoid inline CSS",
+      "info": "Keeps HTML clean and separates structure from styling.",
+      "example": "<div class='highlight'></div>\n/* CSS */\n.highlight { background-color: yellow; }"
+    },
+    {
+      "id": "responsive-units",
+      "text": "Use %/rem/em for font-size and spacing",
+      "info": "Responsive units scale better on different devices.",
+      "example": "body { font-size: 1rem; margin: 2em; }"
+    },
+    {
+      "id": "media-queries",
+      "text": "Use media queries for responsiveness",
+      "info": "Allows layout adjustments on different screen sizes.",
+      "example": "@media (max-width: 768px) {\n  .container { flex-direction: column; }\n}"
+    },
+    {
+      "id": "css-modular",
+      "text": "Organize CSS into clear sections or modules",
+      "info": "Improves maintainability and team collaboration.",
+      "example": "/* Buttons */\n.btn-primary { background: blue; color: white; }"
+    },
+    {
+      "id": "bootstrap",
+      "text": "Use Bootstrap grid effectively",
+      "info": "Speeds up responsive layout development using a familiar grid system.",
+      "example": "<div class='row'>\n  <div class='col-md-6'>Left</div>\n  <div class='col-md-6'>Right</div>\n</div>"
+    },
+    {
+      "id": "no-inline-js",
+      "text": "Avoid inline JavaScript",
+      "info": "Keeps behavior separate from structure, improving maintainability.",
+      "example": "// Instead of: <button onclick='alert()'>\n// Use:\n<button id='btn'>Click</button>\n\n$('#btn').on('click', () => alert());"
+    },
+    {
+      "id": "defer-async",
+      "text": "Use defer or async for script loading",
+      "info": "Improves page load speed and avoids blocking HTML parsing.",
+      "example": "<script src='main.js' defer></script>"
+    },
+    {
+      "id": "strict-mode",
+      "text": "Use strict mode in JavaScript",
+      "info": "Prevents silent errors and encourages better coding practices.",
+      "example": "'use strict';\nlet x = 5;"
+    },
+    {
+      "id": "let-const",
+      "text": "Use let/const instead of var",
+      "info": "Provides block scoping and prevents redeclaration bugs.",
+      "example": "const name = 'Raed';\nlet count = 3;"
+    },
+    {
+      "id": "event-listeners",
+      "text": "Use addEventListener instead of inline handlers",
+      "info": "Keeps logic separated from HTML and improves maintainability.",
+      "example": "element.addEventListener('click', function () { alert('Clicked'); });"
+    },
+    {
+      "id": "no-globals",
+      "text": "Avoid global JS variables",
+      "info": "Reduces risk of variable conflicts in larger apps.",
+      "example": "// Avoid\nwindow.myAppData = {}\n\n// Prefer\nconst appData = {};"
+    },
+    {
+      "id": "localstorage",
+      "text": "Use localStorage for saving preferences",
+      "info": "Keeps user settings saved between visits.",
+      "example": "localStorage.setItem('theme', 'dark');"
+    },
+    {
+      "id": "ajax",
+      "text": "Use AJAX to fetch external data",
+      "info": "Loads content dynamically without reloading the page.",
+      "example": "fetch('data.json').then(res => res.json()).then(data => console.log(data));"
+    }
+  ]
+  

@@ -1,70 +1,51 @@
 /* --- Brand Color Background --- */
 .bg-RP {
     background-color: #007cae !important;
-    /*color: white;*/
   }
   
-  /* --- Consistent Typography & Spacing --- */
+  /* --- Typography & Base --- */
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    padding-bottom: 3.75rem; /* 60px / 16px = 3.75rem */
+    padding-bottom: 3.75rem;
     background-color: #f8f9fa;
-    font-size: 16px; /* Explicit base font size */
+    font-size: 16px;
   }
   
-  
-  /* --- Reward Image Styling --- */
+  /* --- Reward Image --- */
   .reward-img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-
+    margin: 2rem auto;
   }
   
-  /* --- Footer Tweak --- */
+  /* --- Footer Styling --- */
   footer {
     color: white;
     padding: 2rem 0;
   }
-  
   footer h4,
   footer h3,
   footer a {
     color: white !important;
   }
-  
   footer a.navbar-brand:hover {
     text-decoration: underline;
   }
-
-  /* Make header nav links white */
-    header .nav-link,
-    header .navbar-brand {
-  color: white !important;
-}
   
-  /* --- Section Headings --- */
+  /* --- Header Styling --- */
+  header .nav-link,
+  header .navbar-brand {
+    color: white !important;
+  }
+  
+  /* --- Section Title --- */
   .section-title {
     border-bottom: 2px solid #007cae;
     padding-bottom: 0.3rem;
     margin-bottom: 1rem;
   }
   
-  /* --- CV Image Styling --- */
-  main img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-  }
-  
-  /* --- Buttons Consistency --- */
-  .btn-secondary {
-    background-color: #6c757d;
-    border: none;
-  }
-  
+  /* --- CV Image --- */
   .cv-photo {
     max-width: 100%;
     width: 12rem;
@@ -73,59 +54,110 @@
     margin-bottom: 1rem;
   }
   
-/* --- Practice Checklist Styling --- */
+  main img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  /* --- Buttons --- */
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+  }
+  
+  /* --- Practice Items --- */
   .practice {
     display: flex;
     align-items: center;
     gap: 0.1rem;
     margin-bottom: 0.1rem;
   }
-
   .practice input[type="checkbox"] {
     width: 1.3rem;
     height: 1.3rem;
-    margin-right: 0.6rem; /* space between checkbox and label */
+    margin-right: 0.6rem;
   }
-
   .practice label {
-    display: inline-block;
-    vertical-align: middle;
     font-size: 1rem;
   }
-  
-  /* --- Responsive Adjustments --- */
-  @media (max-width: 768px) {
-    .cv-photo {
-      width: 100%;
-    }
-  
-    .practice {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 0.1rem;
-        gap: 0.1rem;
-      }
+  .practice-wrapper-item {
+    margin-bottom: 1rem;
   }
-
+  
+  /* --- InfoBox --- */
+  #infoBox {
+    height: 18.75rem;
+    overflow-y: auto;
+  }
+  .info-box {
+    background-color: #f1f1f1;
+    border-left: 4px solid #007cae;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+  }
+  
+  /* --- Mobile InfoBox --- */
+  .mobile-info-box {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    #infoBox {
+      display: none;
+    }
+    .mobile-info-box {
+      display: block;
+      background-color: #f1f1f1;
+      padding: 1rem;
+      margin-top: 0.5rem;
+      border-left: 4px solid #007cae;
+      border-radius: 5px;
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* --- Sticky Header --- */
   .sticky-header {
     position: sticky;
     top: 0;
-    z-index: 1000; /* this ensures the header stays on top of other elements by setting a high z-index which is for layering */
+    z-index: 1000;
     background-color: #007cae;
-    padding-bottom: 0.5rem; /* this adds some space below the header */
+    padding-bottom: 0.5rem;
   }
   
-/* Progress bar with white frame */
+  /* --- Progress Bar --- */
   .progress {
-    height: 1.25rem; /* 20px / 16px = 1.25rem */
+    height: 1.25rem;
     background-color: transparent;
-    border: 0.125rem solid white; /* 2px / 16px = 0.125rem */
-    border-radius: 0.3125rem; /* 5px / 16px = 0.3125rem */
-    padding: 0;
-    margin: 0;
+    border: 0.125rem solid white;
+    border-radius: 0.3125rem;
     overflow: hidden;
   }
-
+  .progress-bar {
+    width: var(--progress-width, 0%);
+  }
+  
+  /* --- Progress Wrapper --- */
+  .sticky-progress-wrapper {
+    position: sticky;
+    top: 60px;
+    z-index: 999;
+    padding: 0.5rem;
+  }
+  
+  /* --- Checklist Summary --- */
+  #summary, #instruction {
+    margin-top: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  /* --- Checklist Layout --- */
   .practice-wrapper {
     display: flex;
     justify-content: space-between;
@@ -133,78 +165,73 @@
     gap: 2rem;
     margin-top: 1.5rem;
   }
-  
-  /* Each column */
   .practice-column {
     flex: 1;
   }
-  
   .reward-column {
     flex: 1;
   }
-  
-  /* Responsive: stack vertically on small screens */
   @media (max-width: 768px) {
+    .cv-photo {
+      width: 100%;
+    }
+    .practice {
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .practice-wrapper {
       flex-direction: column;
     }
-  
     .reward-column {
       margin-top: 1rem;
     }
   }
-
-  #summary, #instruction {
-    margin-top: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-  }
-
   
-/* --- Loader Spinner --- */
-#loader {
+  /* --- Loader Spinner --- */
+  #loader {
     border: 1.2rem solid white;
     border-radius: 50%;
     border-top: 1.2rem solid #56a5eb;
     width: 12rem;
     height: 12rem;
     animation: spin 2s linear infinite;
-  
-    /* Center inside its container */
-    margin: 2rem auto; /* add spacing and horizontal centering */
+    margin: 2rem auto;
     display: block;
-
   }
-  
   @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
   
+  /* --- Misc --- */
   .hidden {
     display: none !important;
   }
-  
-/* Sticky Progress Bar Wrapper */
-.sticky-progress-wrapper {
-    position: sticky;
-    top: 60px; /* adjust based on your header height */
-    z-index: 999;
-    padding: 0.5rem;
-  }
-
   .low-count {
     color: red;
   }
   .high-count {
     color: green;
   }
-
-  .progress-bar {
-    width: var(--progress-width, 0%);
+  
+  /* --- Code Sample Box --- */
+  .code-sample {
+    background-color: #eaeaea;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    height: 10rem;
   }
+  .code-sample::-webkit-scrollbar {
+    height: 8px;
+    background: #eee;
+  }
+  .code-sample::-webkit-scrollbar-thumb {
+    background: #007cae;
+  }
+  
+  
