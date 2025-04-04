@@ -9,11 +9,11 @@ $(document).ready(async function () {
   const $loader = $('#loader'); // Loader for the animal image while fetching
   const $animalContainer = $('#animalContainer'); // Container for the animal image
   const $progressBar = $('#practiceProgressBar'); // Progress bar for the checklist it goes green when 12 or more items are checked
-  const $infoBox = $('#infoBox'); // Info box for the selected practice it shows the description and example code
-  const $infoText = $('#infoText'); // For
-  const $codeExample = $('#codeExample');
+  const $infoBox = $('#infoBox'); // Info box for the selected practice it contains both infoText and codeExample
+  const $infoText = $('#infoText'); //this is for the info box text that shows the description of the selected practice
+  const $codeExample = $('#codeExample'); //this is for the info box code example that shows the code example of the selected practice
 
-  let selectedPractice = null;
+  let selectedPractice = null; // Variable to store the selected and checked practice
 
   const practices = [
     {
@@ -71,8 +71,8 @@ $(document).ready(async function () {
       "example": "/* Buttons */\n.btn-primary { background: blue; color: white; }"
     },
     {
-      "id": "bootstrap",
-      "text": "Use Bootstrap grid effectively",
+      "id": "bootstrap and FlexBox Grid System",
+      "text": "Use Bootstrap grid effectively - Used in header and footer and FlexBox in the main",
       "info": "Bootstrap grid speeds up development, ensures consistency, handles responsiveness, supports design patterns, and simplifies layout.",
       "example": "<div class='row'>\n  <div class='col-md-6'>Left</div>\n  <div class='col-md-6'>Right</div>\n</div>"
     },
@@ -128,89 +128,104 @@ $(document).ready(async function () {
   
   function renderPractices() {
     practices.forEach(p => {
-      const $wrapper = $('<div>', { class: 'practice-wrapper-item' });
-      const $div = $('<div>', { class: 'practice' });
-      const $checkbox = $('<input>', {
+
+      //create wrapper for the practice
+      const $wrapper = $('<div>', { class: 'practice-wrapper-item' }); 
+
+      //create div for the practice
+      const $div = $('<div>', { class: 'practice' }); 
+      
+      //create checkbox for the practice
+      const $checkbox = $('<input>', { 
         type: 'checkbox',
         id: p.id,
         checked: localStorage.getItem(p.id) === 'true'
       });
 
-      $checkbox.on('change', function () {
-        localStorage.setItem(p.id, this.checked);
-        updateSummary();
-
-        if (this.checked) {
-          selectedPractice = p;
-          showInfoBox(p, $wrapper);
-        } else {
-          selectedPractice = null;
-          resetInfoBox($wrapper);
-        }
-      });
-
-      const $label = $('<label>', {
+      const $label = $('<label>', { //create label for the checkbox
         for: p.id,
         text: ' ' + p.text
       });
 
-      $div.on('mouseenter', function () {
-        if (window.innerWidth > 768) {
-          showInfoBox(p, $wrapper);
+      //create event listener ->checkbox<- for the checkbox to click
+      $checkbox.on('change', function () { 
+        localStorage.setItem(p.id, this.checked); // Store the checkbox state in localStorage
+        updateSummary(); //update counter
+        if (this.checked) {
+          selectedPractice = p; // Store the selected practice
+          showInfoBox(p, $wrapper); // If checked-Show the info box by injecting to wrapper
+        } else {
+          selectedPractice = null;
+          resetInfoBox($wrapper); // If not- Reset the info box
         }
-      }).on('mouseleave', function () {
+      });  //end of event listener - checkbox click
+
+      //creating event listener on ->div<- for mouse enter/hover/leave
+      $div.on('mouseenter', function () { 
+        if (window.innerWidth > 768) {  // When not in mobile - Show info box on mouse enter
+          //showInfoBox(p, $wrapper); 
+        }
+      }).on('mouseleave', function () { // Hide info box on mouse leave unless checked
         if (window.innerWidth > 768) {
-          if (selectedPractice) {
-            showInfoBox(selectedPractice, $wrapper);
+          if (selectedPractice) { // working on the checked item
+            showInfoBox(selectedPractice, $wrapper); 
           } else {
             resetInfoBox($wrapper);
           }
         }
-      });
+      }); //end of event listener - div mouse enter
 
+      //Creating checklist elements by bringing all together by appending, wrapper, div, checkbox and label with TWO event listeners - one only for big screens
       $div.append($checkbox, $label);
       $wrapper.append($div);
 
-      // Responsive info box per item (only visible on small screens)
+      // Responsive info box per item (only visible on small screens - MOBILE) unlike the bg page one this is created dynamically below each checklist item
       const $infoClone = $infoBox.clone().removeAttr('id').addClass('mobile-info-box hidden');
       const $textClone = $('<p>', { class: 'info-text' });
       const $codeClone = $('<pre>', { class: 'code-sample hidden' });
       $infoClone.append($textClone, $codeClone);
       $wrapper.append($infoClone);
 
+      // Store the info box, text, and code example in the wrapper for later use - I can't use classes with jQuery because of the clone as we have multiple clones
       $wrapper.data('infoBox', $infoClone);
       $wrapper.data('infoText', $textClone);
       $wrapper.data('codeExample', $codeClone);
 
-      $checklistContainer.append($wrapper);
+      $checklistContainer.append($wrapper); // Append the wrapper to the checklist container
     });
-  }
+  } //end of renderPractices function - created all the checklist items with wrappers, divs, checkboxes and labels and event listeners 
 
+
+  // Function to show the info box with the practice information
   function showInfoBox(practice, $wrapper) {
-    const $info = $wrapper.data('infoBox');
-    const $text = $wrapper.data('infoText');
-    const $code = $wrapper.data('codeExample');
+    //for small screens - mobile
+    const $info = $wrapper.data('infoBox'); //item 1
+    const $text = $wrapper.data('infoText'); //item 2
+    const $code = $wrapper.data('codeExample'); //item 3
 
-    $info.removeClass('hidden');
-    $text.text(practice.info || 'No description provided.');
-    if (practice.example) {
+    $info.removeClass('hidden');//item 1
+    $text.text(practice.info || 'No description provided.');//item 2
+    if (practice.example) { //item 3
       $code.removeClass('hidden').text(practice.example);
     } else {
       $code.addClass('hidden').text('');
     }
 
-    if (window.innerWidth > 768) {
-      $infoBox.removeClass('hidden');
-      $infoText.text(practice.info || 'No description provided.');
-      if (practice.example) {
+    if (window.innerWidth > 768) { // For larger screens - desktop
+      $infoBox.removeClass('hidden'); //item 1
+      $infoText.text(practice.info || 'No description provided.'); //item 2
+      if (practice.example) { //item 3
         $codeExample.removeClass('hidden').text(practice.example);
       } else {
         $codeExample.addClass('hidden').text('');
       }
+    } else {
+      $infoBox.infoClass('hidden'); // Hide the desktop info box on mobile
     }
   }
 
   function resetInfoBox($wrapper) {
+    //reset the box for mobile
     const $info = $wrapper.data('infoBox');
     const $text = $wrapper.data('infoText');
     const $code = $wrapper.data('codeExample');
@@ -219,22 +234,27 @@ $(document).ready(async function () {
     $text.text('');
     $code.addClass('hidden').text('');
 
+    //reset the box for desktop
     $infoBox.addClass('hidden');
     $infoText.text('');
     $codeExample.addClass('hidden').text('');
   }
 
+  // Function to update the summary percentage and progress bar
   function updateSummary() {
     const total = practices.length;
-    const checked = practices.filter(p => localStorage.getItem(p.id) === 'true').length;
-    $summary.html(`You have fulfilled <span id="checkedCount">${checked}</span> out of ${total} best practices.`);
+    const checked = practices.filter(p => localStorage.getItem(p.id) === 'true').length; // Count checked items
+    $summary.html(`You have fulfilled <span id="checkedCount">${checked}</span> out of ${total} best practices.`); 
 
+    // Update the color of the checked items to red or green
     const $checkedCount = $('#checkedCount');
     $checkedCount.css('color', checked < 12 ? 'red' : 'green');
 
+    // Calculate the percentage and update the progress bar
     const percentage = (checked / total) * 100;
-    $progressBar.css('width', `${percentage}%`).attr('aria-valuenow', checked);
+    $progressBar.css('width', `${percentage}%`).attr('aria-valuenow', checked); //accessibility
 
+    // loader comes up, progress bar goes green if 12 or more items are checked and animal image is fetched either from local storage or from the API
     if (checked >= 12) {
       $loader.removeClass('hidden');
       $progressBar.removeClass('bg-danger').addClass('bg-success');
@@ -244,6 +264,7 @@ $(document).ready(async function () {
         fetchAnimalImage();
       }
     } else {
+      // If less than 12 items are checked, reset the progress bar and hide the loader
       localStorage.removeItem('animalShown');
       localStorage.removeItem('animalUrl');
       $progressBar.removeClass('bg-success').addClass('bg-danger');
@@ -251,7 +272,7 @@ $(document).ready(async function () {
       $loader.addClass('hidden');
     }
   }
-
+  // Function to fetch a random animal image from the API
   async function fetchAnimalImage() {
     try {
       const response = await fetch('https://random.dog/woof.json');
@@ -263,7 +284,7 @@ $(document).ready(async function () {
       $animalContainer.html("<p>🐶 Failed to load image. Try again!</p>");
     }
   }
-
+  // Function to show the animal image in the container and hide the loader
   function showAnimal(url) {
     $animalContainer.empty();
     const img = $('<img>', {
@@ -271,9 +292,9 @@ $(document).ready(async function () {
       alt: 'A cute animal',
       class: 'reward-img'
     });
+    $loader.addClass('hidden');
     $animalContainer.append("<h3>Congrats! 🎉 You've made this guy happy!</h3>");
     $animalContainer.append(img);
-    $loader.addClass('hidden');
   }
 
   renderPractices();
