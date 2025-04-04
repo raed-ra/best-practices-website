@@ -10,7 +10,7 @@ $(document).ready(async function () {
   const $animalContainer = $('#animalContainer'); // Container for the animal image
   const $progressBar = $('#practiceProgressBar'); // Progress bar for the checklist it goes green when 12 or more items are checked
   const $infoBox = $('#infoBox'); // Info box for the selected practice it shows the description and example code
-  const $infoText = $('#infoText'); //
+  const $infoText = $('#infoText'); // For
   const $codeExample = $('#codeExample');
 
   let selectedPractice = null;
