@@ -1,6 +1,7 @@
 # Best Practices Website — CITS5505 Individual Project
 
 This project is part of the CITS5505 Web and Internet Technologies unit at the University of Western Australia (2025).
+You can check the published site here: https://raed-ra.github.io/best-practices-website/index.html
 
 ## 📌 Project Overview
 
